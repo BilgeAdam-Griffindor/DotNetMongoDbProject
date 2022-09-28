@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoMarketPlace.WebApi", "D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoMarketPlace.Mvc", "DemoMarketPlace.Mvc\DemoMarketPlace.Mvc.csproj", "{6C5B3683-38D4-46A6-8F3B-3F10F8689A35}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DatabaseScriptFile", "DatabaseScriptFile", "{37625CF9-260F-4581-B2F0-F9B236910FB5}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseScript.sql = DatabaseScript.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

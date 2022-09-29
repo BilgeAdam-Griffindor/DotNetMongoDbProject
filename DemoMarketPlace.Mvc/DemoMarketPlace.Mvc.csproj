@@ -21,4 +21,8 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DemoMarketPlace.WebApi\DemoMarketPlace.WebApi.csproj" />
+  </ItemGroup>
+
 </Project>

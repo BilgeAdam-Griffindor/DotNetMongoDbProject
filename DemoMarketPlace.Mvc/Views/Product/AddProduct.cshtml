@@ -1,0 +1,19 @@
+﻿
+@model ProductAddViewModel
+@{
+}
+
+<form asp-action="AddProduct" method="post">
+    Ürün Adı: <input type="text" asp-for="ProductName" /><br />
+    Tedarikçi:
+    <select asp-for="SupplierID" asp-items="@Model.SupplierList"></select><br />
+    Kategori:
+    <select asp-for="CategoryID" asp-items="@Model.CategoryList"></select><br />
+    Birim Bazlı Mikatr: <input type="text" asp-for="QuantityPerUnit" /><br />
+    Birim Fiyatı: <input type="text" asp-for="UnitPrice" /><br />
+    Stok Miktarı: <input type="text" asp-for="UnitsInStock" /><br />
+    Sipariş Verilen Miktar: <input type="text" asp-for="UnitsOnOrder" /><br />
+    Kritik Stok Sayısı: <input type="text" asp-for="ReorderLevel" /><br />
+    <input type="checkbox" /> Durdurulmuş Ürün<br />
+    <input type="submit" value="Ekle" />
+</form>

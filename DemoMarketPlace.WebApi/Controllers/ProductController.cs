@@ -31,8 +31,8 @@ namespace DemoMarketPlace.WebApi.Controllers
         {
             try
             {
-                _productDAL.AddNewProduct(addDTO);
-                return Ok();
+                await _productDAL.AddNewProduct(addDTO);
+                return Ok(true);
             }
             catch (Exception)
             {
@@ -43,6 +43,14 @@ namespace DemoMarketPlace.WebApi.Controllers
            // var data = await _baseContext.Suppliers.Include(x => x.Address).ToListAsync();
             //var data = await _baseContext.Products.Include(x => x.Category).ToListAsync();
             //return Ok(data);
+        }
+
+        [HttpGet("GetSupplierCategoryList")]
+        public async Task<IActionResult> GetSupplierCategoryLists()
+        {
+            SupplierCategoryListDTO supplierCategoryListDTO = await _productDAL.GetSupplierCategoryList();
+
+            return Ok(supplierCategoryListDTO);
         }
     }
 }

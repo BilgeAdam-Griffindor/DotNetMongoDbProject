@@ -94,5 +94,46 @@ namespace DemoMarketPlace.WebApi.DAL.Concrete
 
             return null;
         }
+
+        public async Task<SupplierCategoryListDTO> GetSupplierCategoryList()
+        {
+            Log log = new Log()
+            {
+                BaseUserId = 1,
+                TableName = "Product",
+                LogLevel = "Info",
+                OperationType = "GetAll",
+                CreatedDate = DateTime.Now
+            };
+
+            try
+            {
+                SupplierCategoryListDTO supplierCategoryListDTO = new SupplierCategoryListDTO();
+                supplierCategoryListDTO.CategoryList = await _baseContext.Categories.Select(x => new CategoryListDTO()
+                {
+                    CategoryID = x.CategoryID,
+                    CategoryName = x.CategoryName
+                }).ToListAsync();
+
+                supplierCategoryListDTO.SupplierList = await _baseContext.Suppliers.Select(x => new SupplierListDTO()
+                {
+                    SupplierID = x.SupplierID,
+                    CompanyName = x.CompanyName
+                }).ToListAsync();
+
+                _mongoLog.AddLog(log);
+
+                return supplierCategoryListDTO;
+            }
+            catch (Exception ex)
+            {
+                log.LogLevel = "Error";
+                log.LogDetail = ex.Message;
+
+                _mongoLog.AddLog(log);
+            }
+
+            return null;
+        }
     }
 }

@@ -1,0 +1,26 @@
+﻿@model List<SupplierListMvcDTO>
+
+
+
+
+<a class="btn btn-primary" asp-controller="Supplier" asp-action="AddSuppliers">Ekle</a>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tedarikçi</th>
+
+        </tr>
+    </thead>
+    @foreach (var data in Model)
+    {
+        <tbody>
+            <tr>
+                <th scope="row">@data.SupplierID</th>
+                <td>@data.CompanyName</td>
+            </tr>
+        </tbody>
+    }
+</table>
+

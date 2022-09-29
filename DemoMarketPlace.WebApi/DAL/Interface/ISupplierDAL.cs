@@ -5,6 +5,6 @@ namespace DemoMarketPlace.WebApi.DAL.Interface
     public interface ISupplierDAL
     {
         Task<List<SupplierListDTO>> GetAll();
-        Task<bool> AddNewSupplier(SupplierAddDto addDTO);
+        Task<bool> AddNewSupplier(SupplierAddApiDto addDTO);
     }
 }

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DemoMarketPlace.WebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class SupplierController : ControllerBase
     {
         ISupplierDAL _supplierDAL;
@@ -21,28 +21,23 @@ namespace DemoMarketPlace.WebApi.Controllers
         public async Task<IActionResult> Index()
         {
             List<SupplierListDTO> data = await _supplierDAL.GetAll();
-            //var data = await _baseContext.Products.Include(x => x.Category).ToListAsync();
             return Ok(data);
         }
 
         [HttpPost("Add-Supplier")]
-        public async Task<IActionResult> AddSupplier(SupplierAddDto supplier)
+        public async Task<IActionResult> AddSupplier(SupplierAddApiDto supplier)
         {
             try
             {
                 await _supplierDAL.AddNewSupplier(supplier);
 
-                return Ok();
+                return Ok(true);
             }
             catch (Exception)
             {
                 //TODO Bu doğrumu
                 return StatusCode(500);
             }
-
-            // var data = await _baseContext.Suppliers.Include(x => x.Address).ToListAsync();
-            //var data = await _baseContext.Products.Include(x => x.Category).ToListAsync();
-            //return Ok(data);
         }
     }
 }

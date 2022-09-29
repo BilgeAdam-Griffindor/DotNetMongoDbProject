@@ -13,6 +13,7 @@ namespace DemoMarketPlace.WebApi.ServiceExtension
             serviceDescriptors.AddScoped<ICategoryDAL, CategoryDAL>();
             serviceDescriptors.AddScoped<ISupplierDAL, SupplierDAL>();
             serviceDescriptors.AddScoped<IProductDAL, ProductDAL>();
+            serviceDescriptors.AddScoped<IAddressDAL, AddressDAL>();
         }
     }
 }

@@ -78,5 +78,45 @@ namespace DemoMarketPlace.Mvc.ApiService
             }
             return false;
         }
+
+        public async Task<List<CategoryListDTO>> GetAllCategoryAsync()
+        {
+
+
+            var response = await client.GetAsync("Category/Get-Category");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+
+                return Newtonsoft.Json.JsonConvert.DeserializeObject<List<CategoryListDTO>>(content);
+            }
+
+            return null;
+
+
+        }
+
+        public async Task<bool> SaveCategoryAsync(CategoryAddDTO newcategory)
+        {
+            var response = await client.PostAsJsonAsync("Category/Add-Category", newcategory);
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+            var responseBody = await response.Content.ReadAsStringAsync();
+            return true;
+        }
+        //public async Task<bool> SaveCategoryAsync(CategoryAddDTO newcategory)
+        //{
+        //    var data = new StringContent(JsonConvert.SerializeObject(newcategory));
+        //    data.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
+        //    var response = await client.PostAsync("Category/Add-Category", data);
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        return JsonConvert.DeserializeObject<bool>(await response.Content.ReadAsStringAsync());
+        //    }
+        //    return false;
+        //}
     }
 }

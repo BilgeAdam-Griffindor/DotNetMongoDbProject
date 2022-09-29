@@ -1,7 +1,15 @@
+using DemoMarketPlace.Mvc.ApiService;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddHttpClient<DemoMarketApiService>(opt =>
+{
+    opt.BaseAddress = new Uri(builder.Configuration["DemoMarketApi"]);
+});
+
 
 var app = builder.Build();
 

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DemoMarketPlace.WebApi.Migrations
 {
-    [DbContext(typeof(BaseContext))]
+    [DbContext(typeof(DemoDbContext))]
     [Migration("20220928204616_DMP_1")]
     partial class DMP_1
     {

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DemoMarketPlace.WebApi.Context
 {
-    public class BaseContext:DbContext
+    public class DemoDbContext:DbContext
     {
-        public BaseContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
+        public DemoDbContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
         {
 
         }

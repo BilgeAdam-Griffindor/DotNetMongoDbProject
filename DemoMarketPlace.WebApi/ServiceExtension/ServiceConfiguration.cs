@@ -1,6 +1,7 @@
 ﻿using DemoMarketPlace.WebApi.DAL.Concrete;
 using DemoMarketPlace.WebApi.DAL.Interface;
 using DemoMarketPlace.WebApi.Mongo;
+using DemoMarketPlace.WebApi.Quartz.Jobs;
 
 namespace DemoMarketPlace.WebApi.ServiceExtension
 {
@@ -13,6 +14,8 @@ namespace DemoMarketPlace.WebApi.ServiceExtension
             serviceDescriptors.AddScoped<ICategoryDAL, CategoryDAL>();
             serviceDescriptors.AddScoped<ISupplierDAL, SupplierDAL>();
             serviceDescriptors.AddScoped<IProductDAL, ProductDAL>();
+            serviceDescriptors.AddSingleton<IAddressDAL, AddressDAL>();
+          
         }
     }
 }

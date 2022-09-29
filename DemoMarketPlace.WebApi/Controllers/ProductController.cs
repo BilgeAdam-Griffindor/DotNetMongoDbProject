@@ -39,8 +39,7 @@ namespace DemoMarketPlace.WebApi.Controllers
                 //TODO Bu doğrumu
                 return StatusCode(500);
             }
-            
-           // var data = await _baseContext.Suppliers.Include(x => x.Address).ToListAsync();
+            // var data = await _baseContext.Suppliers.Include(x => x.Address).ToListAsync();
             //var data = await _baseContext.Products.Include(x => x.Category).ToListAsync();
             //return Ok(data);
         }

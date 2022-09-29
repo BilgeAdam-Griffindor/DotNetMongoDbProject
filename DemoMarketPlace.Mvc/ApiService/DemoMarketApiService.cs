@@ -79,6 +79,17 @@ namespace DemoMarketPlace.Mvc.ApiService
             return false;
         }
 
+        public async Task<List<AddressListDTO>> GetAllAddresses()
+        {
+            var response = await client.GetAsync("Address/GetAddressesFromMongo");
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                return  JsonConvert.DeserializeObject<List<AddressListDTO>>(content);
+            }
+            return null;
+        }
+
         public async Task<List<CategoryListDTO>> GetAllCategoryAsync()
         {
 

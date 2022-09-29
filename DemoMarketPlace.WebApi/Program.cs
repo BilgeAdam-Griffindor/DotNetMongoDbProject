@@ -1,6 +1,14 @@
 using DemoMarketPlace.WebApi.Context;
+using DemoMarketPlace.WebApi.DAL.Interface;
+using DemoMarketPlace.WebApi.Quartz.HostedService;
+using DemoMarketPlace.WebApi.Quartz.JobFactory;
+using DemoMarketPlace.WebApi.Quartz.JobPlanning;
+using DemoMarketPlace.WebApi.Quartz.Jobs;
 using DemoMarketPlace.WebApi.ServiceExtension;
 using Microsoft.EntityFrameworkCore;
+using Quartz;
+using Quartz.Impl;
+using Quartz.Spi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +20,20 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddServices(builder.Configuration);
 builder.Services.AddDbContext<DemoDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddHttpContextAccessor();
+
+//builder.Services
+builder.Services.AddSingleton<IJobFactory, SingletonJobFactory>();
+builder.Services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
+
+builder.Services.AddTransient<MongoDbCheckAddress>();
+//services.AddSingleton<HelloWorldJob2>();
+
+builder.Services.AddSingleton(new JobSchedule(
+    jobType: typeof(MongoDbCheckAddress),
+    cronExpression: "* * * ? * *"));
+
+builder.Services.AddHostedService<QuartzHostedService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

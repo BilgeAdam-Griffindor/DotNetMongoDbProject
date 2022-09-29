@@ -25,8 +25,11 @@ namespace DemoMarketPlace.Mvc.Controllers
         [HttpGet]
         public async Task<IActionResult> AddSuppliers()
         {
-            //Todo MongoDb adres getirilecek, ilçe ve şehir olarak
-            return View();
+            var result = await _demoMarketApiService.GetAllAddresses();
+            SupplierAddMvcDTO supplierDto = new SupplierAddMvcDTO();
+            supplierDto.Sehir = result.Where(x => x.AddressType == 100).ToList();
+            supplierDto.Ilce = result.Where(x => x.AddressType == 200).ToList();
+            return View(supplierDto);
         }
         [HttpPost]
         public async Task<IActionResult> AddSuppliers(SupplierAddMvcDTO supplierAddDTO)

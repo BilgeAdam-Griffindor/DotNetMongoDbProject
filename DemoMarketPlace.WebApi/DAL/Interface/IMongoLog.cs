@@ -1,4 +1,5 @@
-﻿using DemoMarketPlace.WebApi.MongoModel;
+﻿using DemoMarketPlace.WebApi.Dto;
+using DemoMarketPlace.WebApi.MongoModel;
 
 namespace DemoMarketPlace.WebApi.DAL.Interface
 {
@@ -6,5 +7,9 @@ namespace DemoMarketPlace.WebApi.DAL.Interface
     {
         Log GetById(string id);
         bool AddLog(Log log);
+
+        Task<bool> InsertAllAddressToMongo(List<AddressListDTO> address);
+
+        Task<List<Addresses>> GetAllAddressesFromMongo();
     }
 }

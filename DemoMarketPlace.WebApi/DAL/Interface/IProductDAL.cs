@@ -6,5 +6,6 @@ namespace DemoMarketPlace.WebApi.DAL.Interface
     {
         Task<List<ProductListDTO>> GetAll();
         Task<bool> AddNewProduct(ProductAddDTO addDTO);
+        Task<SupplierCategoryListDTO> GetSupplierCategoryList();
     }
 }

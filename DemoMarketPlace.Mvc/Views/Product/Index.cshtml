@@ -1,0 +1,32 @@
+﻿@model List<ProductListDTO>
+@{
+    Layout = null;
+}
+
+<style>
+    table:nth-child(even) tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    tr td:not(:first-child) {
+        padding-left: 10px;
+    }
+</style>
+
+<a asp-action="AddProduct">Yeni Ürün Ekle</a>
+<br />
+<br />
+
+<table cellspacing="0">
+    <tr>
+        <td>Ürün Id</td>
+        <td>Ürün Adı</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.ProductName</td>
+        </tr>
+    }
+</table>

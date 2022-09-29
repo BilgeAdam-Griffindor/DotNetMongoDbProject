@@ -14,13 +14,13 @@ namespace DemoMarketPlace.WebApi.Controllers
             _addresesDal = addresesDal;
         }
         
-        [HttpGet("/api/Address/GetAllAddressesFromSqlToMongo")] 
+        [HttpGet("GetAllAddressesFromSqlToMongo")] 
         public async Task<IActionResult> GetAllAddressesFromSqlToMongo()
         {
             var result=await _addresesDal.GetAllAddresses();
             return Ok(result);
         }
-        [HttpGet("/api/Address/GetAddressesFromMongo")]
+        [HttpGet("GetAddressesFromMongo")]
         public async Task<IActionResult> GetAddressesFromMongo()
         {
             var result = await _addresesDal.GetAllAddresses();

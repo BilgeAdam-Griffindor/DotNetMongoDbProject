@@ -5,25 +5,25 @@
     <input type="text" asp-for="CompanyName" />
     <br />
     <br />
-    <label>İlçe Adı</label>
-    <select class="form-select" asp-for="IlceId">
-        <option  value="2">Bahçelievler</option>
-       @* <option selected>İlçe Seçiniz</option>
+    <label>Şehir Adı</label>
+    <select class="form-select" asp-for="SehirId">
+        @*<option  value="2">Bahçelievler</option>*@
+       @* <option selected>İlçe Seçiniz</option>*@
         @foreach(var i in Model.Sehir)
         {
-            <option value="@i.AddressId">@i.AddressName</option>
-        }*@
+            <option value="@i.Id">@i.AddressName</option>
+        }
     </select>
     <br />
     <br />
-    <label>Şehir Adı</label>
-    <select class="form-select" asp-for="SehirId">
-         <option value="1">İstanbul</option>
-        @*<option selected>Şehir Seçiniz</option>
+    <label>İlçe Adı</label>
+    <select class="form-select" asp-for="IlceId">
+         @*<option value="1">İstanbul</option>*@
+       @* <option selected>Şehir Seçiniz</option>*@
         @foreach(var i in Model.Ilce)
         {
-            <option value="@i.AddressId">@i.AddressName</option>
-        }*@
+            <option value="@i.Id">@i.AddressName</option>
+        }
     </select>
     <br />
     <br />

@@ -1,37 +1,34 @@
-﻿using DemoMarketPlace.WebApi.Context;
-using DemoMarketPlace.WebApi.DAL.Concrete;
-using DemoMarketPlace.WebApi.DAL.Interface;
+﻿using DemoMarketPlace.WebApi.DAL.Interface;
 using DemoMarketPlace.WebApi.Dto;
-using DemoMarketPlace.WebApi.Model;
-using DemoMarketPlace.WebApi.MongoModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace DemoMarketPlace.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class CategoryController : ControllerBase
     {
-        IProductDAL _productDAL;
-        public ProductController(IProductDAL productDAL)
+        ICategoryDAL _categoryDAL;
+
+        public CategoryController(ICategoryDAL categoryDAL)
         {
-            _productDAL = productDAL;
+            _categoryDAL = categoryDAL;
         }
-        [HttpGet("Get-Product")]
+        [HttpGet("Get-Category")]
         public async Task<IActionResult> Index()
         {
-            var data = await _productDAL.GetAll();
+            List<CategoryListDTO> data = await _categoryDAL.GetAll();
             //var data = await _baseContext.Products.Include(x => x.Category).ToListAsync();
             return Ok(data);
         }
-        [HttpPost("Add-Product")]
-        public async Task<IActionResult> AddProduct(ProductAddDTO addDTO)
+        [HttpPost("Add-Category")]
+        public async Task<IActionResult> AddCategory(CategoryAddDTO category)
         {
             try
             {
-                _productDAL.AddNewProduct(addDTO);
+                await _categoryDAL.AddNewCategory(category);
+
                 return Ok();
             }
             catch (Exception)
@@ -39,8 +36,8 @@ namespace DemoMarketPlace.WebApi.Controllers
                 //TODO Bu doğrumu
                 return StatusCode(500);
             }
-            
-           // var data = await _baseContext.Suppliers.Include(x => x.Address).ToListAsync();
+
+            // var data = await _baseContext.Suppliers.Include(x => x.Address).ToListAsync();
             //var data = await _baseContext.Products.Include(x => x.Category).ToListAsync();
             //return Ok(data);
         }

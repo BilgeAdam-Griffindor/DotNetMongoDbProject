@@ -10,6 +10,9 @@ namespace DemoMarketPlace.WebApi.ServiceExtension
         {
             serviceDescriptors.Configure<MongoSettings>(configuration.GetSection("MongoSettings"));
             serviceDescriptors.AddSingleton<IMongoLog, MongoLog>();
+            serviceDescriptors.AddScoped<ICategoryDAL, CategoryDAL>();
+            serviceDescriptors.AddScoped<ISupplierDAL, SupplierDAL>();
+            serviceDescriptors.AddScoped<IProductDAL, ProductDAL>();
         }
     }
 }

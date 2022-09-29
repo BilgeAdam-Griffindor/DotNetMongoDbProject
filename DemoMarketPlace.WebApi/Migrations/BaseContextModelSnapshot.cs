@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DemoMarketPlace.WebApi.Migrations
 {
-    [DbContext(typeof(BaseContext))]
+    [DbContext(typeof(DemoDbContext))]
     partial class BaseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

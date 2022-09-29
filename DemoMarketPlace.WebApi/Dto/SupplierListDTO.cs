@@ -6,5 +6,6 @@ namespace DemoMarketPlace.WebApi.Dto
     {
         public int? SupplierID { get; set; }
         public string CompanyName { get; set; }
+
     }
 }

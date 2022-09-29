@@ -19,7 +19,7 @@ namespace DemoMarketPlace.WebApi.DAL.Concrete
             _mongoLog = mongoLog;
         }
 
-        public async Task<bool> AddNewSupplier(SupplierAddDto addDTO)
+        public async Task<bool> AddNewSupplier(SupplierAddApiDto addDTO)
         {
             Log log = new Log(){
                 BaseUserId = 1,

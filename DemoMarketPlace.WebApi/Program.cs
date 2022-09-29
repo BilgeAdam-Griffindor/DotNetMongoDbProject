@@ -1,4 +1,5 @@
 using DemoMarketPlace.WebApi.Context;
+using DemoMarketPlace.WebApi.DAL.Interface;
 using DemoMarketPlace.WebApi.Quartz.HostedService;
 using DemoMarketPlace.WebApi.Quartz.JobFactory;
 using DemoMarketPlace.WebApi.Quartz.JobPlanning;
@@ -24,7 +25,7 @@ builder.Services.AddDbContext<DemoDbContext>(options => options.UseSqlServer(bui
 builder.Services.AddSingleton<IJobFactory, SingletonJobFactory>();
 builder.Services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
 
-builder.Services.AddSingleton<MongoDbCheckAddress>();
+builder.Services.AddTransient<MongoDbCheckAddress>();
 //services.AddSingleton<HelloWorldJob2>();
 
 builder.Services.AddSingleton(new JobSchedule(

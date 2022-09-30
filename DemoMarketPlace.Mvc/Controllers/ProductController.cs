@@ -16,7 +16,7 @@ namespace DemoMarketPlace.Mvc.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Urunler()
         {
             var productList = await _demoMarketApi.GetAllProducts();
 
@@ -63,7 +63,7 @@ namespace DemoMarketPlace.Mvc.Controllers
 
             await _demoMarketApi.AddNewProduct(addDTO);
 
-            return RedirectToAction("Index", "Product");
+            return RedirectToAction("Urunler", "Product");
         }
 
     }

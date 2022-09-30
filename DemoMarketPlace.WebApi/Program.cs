@@ -27,12 +27,12 @@ builder.Services.AddDbContext<DemoDbContext>(options => options.UseSqlServer(bui
 builder.Services.AddSingleton<IJobFactory, SingletonJobFactory>();
 builder.Services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
 
-builder.Services.AddTransient<MongoDbCheckAddress>();
+builder.Services.AddSingleton<MongoDbCheckAddress>();
 
 
 builder.Services.AddSingleton(new JobSchedule(
     jobType: typeof(MongoDbCheckAddress),
-    cronExpression: "* * * ? * *"));
+    cronExpression: "0/10 * * ? * * *"));
 
 builder.Services.AddHostedService<QuartzHostedService>();
 

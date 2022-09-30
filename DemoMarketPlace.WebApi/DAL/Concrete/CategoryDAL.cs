@@ -65,11 +65,12 @@ namespace DemoMarketPlace.WebApi.DAL.Concrete
 
             try
             {
-                var data = await _baseContext.Categories.Select(x => new CategoryListDTO()
-                {
-                    CategoryID = x.CategoryID,
-                    CategoryName = x.CategoryName
-                }).ToListAsync();
+                //var data = await _baseContext.Categories.Select(x => new CategoryListDTO()
+                //{
+                //    CategoryID = x.CategoryID,
+                //    CategoryName = x.CategoryName
+                //}).ToListAsync();
+                var data = await _baseContext.Categories.Select(x => new CategoryListDTO(x.CategoryID, x.CategoryName)).ToListAsync();
 
                 _mongoLog.AddLog(log);
 

@@ -4,7 +4,6 @@ using DemoMarketPlace.WebApi.Dto;
 using DemoMarketPlace.WebApi.Model;
 using DemoMarketPlace.WebApi.MongoModel;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Immutable;
 
 namespace DemoMarketPlace.WebApi.DAL.Concrete
 {
@@ -21,7 +20,8 @@ namespace DemoMarketPlace.WebApi.DAL.Concrete
 
         public async Task<bool> AddNewSupplier(SupplierAddApiDto addDTO)
         {
-            Log log = new Log(){
+            Log log = new Log()
+            {
                 BaseUserId = 1,
                 TableName = "Supplier",
                 LogLevel = "Info",
@@ -65,11 +65,12 @@ namespace DemoMarketPlace.WebApi.DAL.Concrete
 
             try
             {
-                var data = await _baseContext.Suppliers.Select(x => new SupplierListDTO()
-                {
-                    SupplierID = x.SupplierID,
-                    CompanyName = x.CompanyName
-                }).ToListAsync();
+                //var data = await _baseContext.Suppliers.Select(x => new SupplierListDTO()
+                //{
+                //    SupplierID = x.SupplierID,
+                //    CompanyName = x.CompanyName
+                //}).ToListAsync();
+                var data = await _baseContext.Suppliers.Select(x => new SupplierListDTO(x.SupplierID, x.CompanyName)).ToListAsync();
 
                 _mongoLog.AddLog(log);
 

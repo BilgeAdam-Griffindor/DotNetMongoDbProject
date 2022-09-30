@@ -1,6 +1,5 @@
 ﻿using DemoMarketPlace.Mvc.ApiService;
 using DemoMarketPlace.Mvc.DTO;
-using DemoMarketPlace.WebApi.Dto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DemoMarketPlace.Mvc.Controllers
@@ -17,7 +16,7 @@ namespace DemoMarketPlace.Mvc.Controllers
             return View();
         }
         [HttpGet]
-        public async  Task<IActionResult> Anasayfa()
+        public async Task<IActionResult> Anasayfa()
         {
             var data = await _demoMarketApiService.GetAllSuppliers();
             return View(data);

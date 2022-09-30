@@ -1,4 +1,5 @@
 using DemoMarketPlace.WebApi.Context;
+using DemoMarketPlace.WebApi.DAL.Concrete;
 using DemoMarketPlace.WebApi.DAL.Interface;
 using DemoMarketPlace.WebApi.Quartz.HostedService;
 using DemoMarketPlace.WebApi.Quartz.JobFactory;
@@ -13,6 +14,7 @@ using Quartz.Spi;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IAddressDAL, AddressDAL>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -21,12 +23,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddServices(builder.Configuration);
 builder.Services.AddDbContext<DemoDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//builder.Services
+
 builder.Services.AddSingleton<IJobFactory, SingletonJobFactory>();
 builder.Services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
 
 builder.Services.AddTransient<MongoDbCheckAddress>();
-//services.AddSingleton<HelloWorldJob2>();
+
 
 builder.Services.AddSingleton(new JobSchedule(
     jobType: typeof(MongoDbCheckAddress),

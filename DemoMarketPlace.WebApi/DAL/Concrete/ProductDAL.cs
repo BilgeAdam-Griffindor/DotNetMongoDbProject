@@ -74,11 +74,12 @@ namespace DemoMarketPlace.WebApi.DAL.Concrete
 
             try
             {
-                var data = await _baseContext.Products.Select(x => new ProductListDTO()
-                {
-                    ProductID = x.ProductID,
-                    ProductName = x.ProductName,
-                }).ToListAsync();
+                //var data = await _baseContext.Products.Select(x => new ProductListDTO()
+                //{
+                //    ProductID = x.ProductID,
+                //    ProductName = x.ProductName,
+                //}).ToListAsync();
+                var data = await _baseContext.Products.Select(x => new ProductListDTO(x.ProductID, x.ProductName)).ToListAsync();
 
                 _mongoLog.AddLog(log);
 
@@ -109,17 +110,19 @@ namespace DemoMarketPlace.WebApi.DAL.Concrete
             try
             {
                 SupplierCategoryListDTO supplierCategoryListDTO = new SupplierCategoryListDTO();
-                supplierCategoryListDTO.CategoryList = await _baseContext.Categories.Select(x => new CategoryListDTO()
-                {
-                    CategoryID = x.CategoryID,
-                    CategoryName = x.CategoryName
-                }).ToListAsync();
+                //supplierCategoryListDTO.CategoryList = await _baseContext.Categories.Select(x => new CategoryListDTO()
+                //{
+                //    CategoryID = x.CategoryID,
+                //    CategoryName = x.CategoryName
+                //}).ToListAsync();
+                supplierCategoryListDTO.CategoryList = await _baseContext.Categories.Select(x => new CategoryListDTO(x.CategoryID, x.CategoryName)).ToListAsync();
 
-                supplierCategoryListDTO.SupplierList = await _baseContext.Suppliers.Select(x => new SupplierListDTO()
-                {
-                    SupplierID = x.SupplierID,
-                    CompanyName = x.CompanyName
-                }).ToListAsync();
+                //supplierCategoryListDTO.SupplierList = await _baseContext.Suppliers.Select(x => new SupplierListDTO()
+                //{
+                //    SupplierID = x.SupplierID,
+                //    CompanyName = x.CompanyName
+                //}).ToListAsync();
+                supplierCategoryListDTO.SupplierList = await _baseContext.Suppliers.Select(x => new SupplierListDTO(x.SupplierID, x.CompanyName)).ToListAsync();
 
                 _mongoLog.AddLog(log);
 

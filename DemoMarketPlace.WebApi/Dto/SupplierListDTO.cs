@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace DemoMarketPlace.WebApi.Dto
+﻿namespace DemoMarketPlace.WebApi.Dto
 {
-    public class SupplierListDTO
-    {
-        public int? SupplierID { get; set; }
-        public string CompanyName { get; set; }
+    public record SupplierListDTO(int? SupplierID, string CompanyName);
+    //public class SupplierListDTO
+    //{
+    //    public int? SupplierID { get; set; }
+    //    public string CompanyName { get; set; }
 
-    }
+    //}
 }

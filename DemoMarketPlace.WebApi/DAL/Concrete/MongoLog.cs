@@ -46,7 +46,8 @@ namespace DemoMarketPlace.WebApi.DAL.Concrete
         {
             try
             {
-                await _MongoAddressCollection.DeleteManyAsync(_ => true);
+                FilterDefinition<Addresses> getAll = Builders<Addresses>.Filter.Empty;
+                await _MongoAddressCollection.DeleteManyAsync(getAll);
                 List<Addresses> mongoAddress = new List<Addresses>();
                 foreach (var item in address)
                 {

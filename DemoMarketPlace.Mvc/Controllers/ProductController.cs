@@ -24,7 +24,7 @@ namespace DemoMarketPlace.Mvc.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AddProduct()
+        public async Task<IActionResult> AddProducts()
         {
             var lists = await _demoMarketApi.GetSupplierCategoryLists();
 
@@ -46,7 +46,7 @@ namespace DemoMarketPlace.Mvc.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProduct(ProductAddViewModel viewData)
+        public async Task<IActionResult> AddProducts(ProductAddViewModel viewData)
         {
             ProductAddDTO addDTO = new ProductAddDTO()
             {
@@ -63,7 +63,7 @@ namespace DemoMarketPlace.Mvc.Controllers
 
             await _demoMarketApi.AddNewProduct(addDTO);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Product");
         }
 
     }

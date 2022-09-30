@@ -3,13 +3,13 @@
 @{
 }
 
-<form asp-action="AddProduct" method="post">
+<form asp-action="AddProducts" method="post">
     Ürün Adı: <input type="text" asp-for="ProductName" /><br />
     Tedarikçi:
     <select asp-for="SupplierID" asp-items="@Model.SupplierList"></select><br />
     Kategori:
     <select asp-for="CategoryID" asp-items="@Model.CategoryList"></select><br />
-    Birim Bazlı Mikatr: <input type="text" asp-for="QuantityPerUnit" /><br />
+    Birim Bazlı Miktar: <input type="text" asp-for="QuantityPerUnit" /><br />
     Birim Fiyatı: <input type="text" asp-for="UnitPrice" /><br />
     Stok Miktarı: <input type="text" asp-for="UnitsInStock" /><br />
     Sipariş Verilen Miktar: <input type="text" asp-for="UnitsOnOrder" /><br />

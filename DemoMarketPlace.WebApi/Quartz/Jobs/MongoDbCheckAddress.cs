@@ -23,7 +23,7 @@ namespace DemoMarketPlace.WebApi.Quartz.Jobs
             {
                 var service = scope.ServiceProvider.GetRequiredService<IAddressDAL>();
 
-                //var list = service.GetAllAddresses().Result;
+                var list = service.GetAllAddresses().Result;
             }
 
             Console.WriteLine("deneme");
